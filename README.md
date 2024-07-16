@@ -46,7 +46,7 @@ Include instructions here on how to use your code. For example:
 
 
 ```bash
-python main.py
+streamlit run app.py
 ```
 
 ## Project Structure

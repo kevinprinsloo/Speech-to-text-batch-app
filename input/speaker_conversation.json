@@ -1,0 +1,164 @@
+{
+    "conversation": [
+        {
+            "speaker": "speaker_1",
+            "text": "Hi, thank you for calling Contessa Pharmacy.",
+            "timestamp": "PT0.76S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "Who am I speaking with today?",
+            "timestamp": "PT2.52S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Good afternoon, my name is Mary, I'm calling for a refill for my prescribed medications.",
+            "timestamp": "PT4.68S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "I have been trying to get a hold of someone for weeks and was told that I would get a call back regarding my situation but it's been weeks and no one's contacted me so I thought I'd call.",
+            "timestamp": "PT8.68S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "I understand your frustration, Mary.",
+            "timestamp": "PT17.72S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "Can you tell me what exactly you're trying to accomplish?",
+            "timestamp": "PT19.72S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Yes, I'm trying to get a refill of my prescription drug so the my doctor prescribed to me for cholesterol.",
+            "timestamp": "PT22.6S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "OK.",
+            "timestamp": "PT29.12S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "Certainly happy to check that for you.",
+            "timestamp": "PT30.04S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "One moment please.",
+            "timestamp": "PT32.04S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "I see here that you were on a generic form of Lipitor, is that right?",
+            "timestamp": "PT36.36S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Yes, I was taking the generic form of Lipitor.",
+            "timestamp": "PT41.2S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "OK, so I see that your doctor stopped prescribing these drugs in 2021 actually.",
+            "timestamp": "PT44.88S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Oh really?",
+            "timestamp": "PT51.8S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "That doesn't sound right.",
+            "timestamp": "PT52.2S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "I don't remember him cancelling my prescription.",
+            "timestamp": "PT53.28S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "OK, yeah, I'd be happy to check that for you because sometimes there's a gap in the system and it just doesn't get reported.",
+            "timestamp": "PT56.72S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "So let me take a look here just a moment.",
+            "timestamp": "PT1M3.68S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "So I'm seeing here that your doctor had these drugs prescribed to you from 2012 through 2021.",
+            "timestamp": "PT1M17.32S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Oh, I mean, I'm definitely supposed to be taking something else.",
+            "timestamp": "PT1M25.68S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Would you check please?",
+            "timestamp": "PT1M29.32S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "OK.",
+            "timestamp": "PT1M32.76S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "Yeah.",
+            "timestamp": "PT1M34.48S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "According to the latest records provided by the doctor's office, you're now on a different drug, metformin.",
+            "timestamp": "PT1M34.72S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "Would you like us to go ahead and fill that prescription for you for pick up Metformin 500 milligrams?",
+            "timestamp": "PT1M41.2S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Yeah, yeah.",
+            "timestamp": "PT1M47.72S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Thank you so much.",
+            "timestamp": "PT1M48.28S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "I'm almost out, so that'd be perfect.",
+            "timestamp": "PT1M49.08S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "You're very welcome, Mary.",
+            "timestamp": "PT1M52.6S"
+        },
+        {
+            "speaker": "speaker_1",
+            "text": "Please let us know if there's anything else we can do for you today.",
+            "timestamp": "PT1M54S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "OK.",
+            "timestamp": "PT1M57.12S"
+        },
+        {
+            "speaker": "speaker_2",
+            "text": "Thank you.",
+            "timestamp": "PT1M57.56S"
+        }
+    ]
+}

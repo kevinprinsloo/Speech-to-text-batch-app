@@ -1,0 +1,259 @@
+2024-07-09 15:36:12 - INFO - Converted input\Call3_separated_16k_pharmacy_call.wav to mono and saved as input\mono_Call3_separated_16k_pharmacy_call.wav
+Container convertedinput already exists or could not be created: The specified container already exists.
+RequestId:007d2717-401e-0067-0d0d-d2d863000000
+Time:2024-07-09T14:36:12.2998191Z
+ErrorCode:ContainerAlreadyExists
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.
+RequestId:007d2717-401e-0067-0d0d-d2d863000000
+Time:2024-07-09T14:36:12.2998191Z</Message></Error>
+Uploaded input\mono_Call3_separated_16k_pharmacy_call.wav to convertedinput/mono_Call3_separated_16k_pharmacy_call.wav
+Removed local file: input\mono_Call3_separated_16k_pharmacy_call.wav
+
+2024-07-09 15:37:34 - INFO - 07/09/2024 03:36:14 PM GMT Summer Time Starting transcription client...
+07/09/2024 03:36:18 PM GMT Summer Time Created new transcription with id 'a701677f-59d5-45f5-9272-3c0c4d7b6888' in region eastus
+07/09/2024 03:36:18 PM GMT Summer Time Checking status.
+07/09/2024 03:36:23 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:36:28 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:36:33 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:36:38 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:36:43 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:36:48 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:36:53 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:36:59 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:37:04 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:37:09 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:37:14 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:37:19 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:37:24 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:37:29 PM GMT Summer Time Transcriptions status: Running
+07/09/2024 03:37:34 PM GMT Summer Time Transcriptions status: Succeeded
+07/09/2024 03:37:34 PM GMT Summer Time Transcription succeeded. Results are located in your Azure Blob Storage.
+
+2024-07-09 15:37:44 - INFO - 07/09/2024 03:37:36 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'c8e86463-3e00-11ef-b766-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:36 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:36 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=e4e68a13-c191-459a-b947-a5e45b9f8c71%2F HTTP/11" 200 None
+07/09/2024 03:37:36 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '90d2a826-601e-005f-490d-d27ca3000000'
+    'x-ms-client-request-id': 'c8e86463-3e00-11ef-b766-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:36 GMT'
+07/09/2024 03:37:36 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:37 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/e4e68a13-c191-459a-b947-a5e45b9f8c71/contenturl_0.json?se=2024-07-09T16%3A37%3A36Z&sp=r&sv=2024-05-04&sr=b&sig=kFm%2BZG1GRqMn7Z4trm/C40HmqMa%2BCvBMSI1Jaw37S14%3D HTTP/11" 200 177133
+07/09/2024 03:37:37 PM GMT Summer Time Blob downloaded to output\e4e68a13-c191-459a-b947-a5e45b9f8c71_contenturl_0.json successfully.
+07/09/2024 03:37:37 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'c985bfd2-3e00-11ef-98d0-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:37 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:37 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=d630ece4-0396-40a0-8ddf-a4760e1e0633%2F HTTP/11" 200 None
+07/09/2024 03:37:37 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '6d80ef34-d01e-0038-6d0d-d26c5f000000'
+    'x-ms-client-request-id': 'c985bfd2-3e00-11ef-98d0-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:37 GMT'
+07/09/2024 03:37:37 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:38 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/d630ece4-0396-40a0-8ddf-a4760e1e0633/contenturl_0.json?se=2024-07-09T16%3A37%3A37Z&sp=r&sv=2024-05-04&sr=b&sig=gNA6OerfyBl/2qi1DLgZR%2BgEHAbBMa7nycSsulZie5g%3D HTTP/11" 200 177135
+07/09/2024 03:37:38 PM GMT Summer Time Blob downloaded to output\d630ece4-0396-40a0-8ddf-a4760e1e0633_contenturl_0.json successfully.
+07/09/2024 03:37:38 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'ca14c2df-3e00-11ef-9a16-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:38 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:38 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=c65113be-6e66-4996-b6a5-398c58a9623a%2F HTTP/11" 200 None
+07/09/2024 03:37:38 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '5c588abe-901e-0016-230d-d23e48000000'
+    'x-ms-client-request-id': 'ca14c2df-3e00-11ef-9a16-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:39 GMT'
+07/09/2024 03:37:38 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:39 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/c65113be-6e66-4996-b6a5-398c58a9623a/contenturl_0.json?se=2024-07-09T16%3A37%3A38Z&sp=r&sv=2024-05-04&sr=b&sig=e4zBKNgw6FmlaRep6RrGwN6/5BfNkE2XKh8fle%2BooUY%3D HTTP/11" 200 177133
+07/09/2024 03:37:39 PM GMT Summer Time Blob downloaded to output\c65113be-6e66-4996-b6a5-398c58a9623a_contenturl_0.json successfully.
+07/09/2024 03:37:39 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'caa66236-3e00-11ef-a893-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:39 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:39 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=edd4bed4-d047-4ed8-b067-e895edc3e83d%2F HTTP/11" 200 None
+07/09/2024 03:37:39 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '16b3f110-d01e-0081-750d-d26845000000'
+    'x-ms-client-request-id': 'caa66236-3e00-11ef-a893-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:40 GMT'
+07/09/2024 03:37:39 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:39 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/edd4bed4-d047-4ed8-b067-e895edc3e83d/contenturl_0.json?se=2024-07-09T16%3A37%3A39Z&sp=r&sv=2024-05-04&sr=b&sig=Or3vyKOqdhm6tfxIRty0rNuQT5hXAAzeiHsbB5mDIT8%3D HTTP/11" 200 177135
+07/09/2024 03:37:40 PM GMT Summer Time Blob downloaded to output\edd4bed4-d047-4ed8-b067-e895edc3e83d_contenturl_0.json successfully.
+07/09/2024 03:37:40 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'cb337d6d-3e00-11ef-a0c0-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:40 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:40 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=2b7d275f-0fe5-478d-a3a7-d97aad71b13c%2F HTTP/11" 200 None
+07/09/2024 03:37:40 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '4ce73de9-301e-006d-790d-d27cd4000000'
+    'x-ms-client-request-id': 'cb337d6d-3e00-11ef-a0c0-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:41 GMT'
+07/09/2024 03:37:40 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:40 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/2b7d275f-0fe5-478d-a3a7-d97aad71b13c/contenturl_0.json?se=2024-07-09T16%3A37%3A40Z&sp=r&sv=2024-05-04&sr=b&sig=gAaUv05AawNLp94CXWKVldOu0H13xNvrFYw4nxjb16U%3D HTTP/11" 200 177135
+07/09/2024 03:37:41 PM GMT Summer Time Blob downloaded to output\2b7d275f-0fe5-478d-a3a7-d97aad71b13c_contenturl_0.json successfully.
+07/09/2024 03:37:41 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'cbc526ff-3e00-11ef-b24b-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:41 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:41 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=23d4858b-4d20-49ae-8278-4ce4818d5d0b%2F HTTP/11" 200 None
+07/09/2024 03:37:41 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '63dff2a5-401e-0048-010d-d2d5a8000000'
+    'x-ms-client-request-id': 'cbc526ff-3e00-11ef-b24b-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:41 GMT'
+07/09/2024 03:37:41 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:41 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/23d4858b-4d20-49ae-8278-4ce4818d5d0b/contenturl_0.json?se=2024-07-09T16%3A37%3A41Z&sp=r&sv=2024-05-04&sr=b&sig=CxazhAoX0bCOnjt5RCCoKfyYo64vF5r5WgfLLQQYQKI%3D HTTP/11" 200 177135
+07/09/2024 03:37:42 PM GMT Summer Time Blob downloaded to output\23d4858b-4d20-49ae-8278-4ce4818d5d0b_contenturl_0.json successfully.
+07/09/2024 03:37:42 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'cc5435e6-3e00-11ef-a98f-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:42 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:42 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=93a5dc87-4d80-4f5b-8f4a-a8e8cc86c710%2F HTTP/11" 200 None
+07/09/2024 03:37:42 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '8f2e7be7-501e-006b-3a0d-d24f6b000000'
+    'x-ms-client-request-id': 'cc5435e6-3e00-11ef-a98f-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:42 GMT'
+07/09/2024 03:37:42 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:42 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/93a5dc87-4d80-4f5b-8f4a-a8e8cc86c710/contenturl_0.json?se=2024-07-09T16%3A37%3A42Z&sp=r&sv=2024-05-04&sr=b&sig=x0Ik0esoJMGhp4/eaY091iD1mI%2BWr%2Bggc2l%2B38Va120%3D HTTP/11" 200 177133
+07/09/2024 03:37:43 PM GMT Summer Time Blob downloaded to output\93a5dc87-4d80-4f5b-8f4a-a8e8cc86c710_contenturl_0.json successfully.
+07/09/2024 03:37:43 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'cce15a59-3e00-11ef-8651-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:43 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:43 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=d377d6a9-87bc-4c83-9446-32fd55e589d1%2F HTTP/11" 200 None
+07/09/2024 03:37:43 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': 'f528eaef-401e-002a-760d-d2178f000000'
+    'x-ms-client-request-id': 'cce15a59-3e00-11ef-8651-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:43 GMT'
+07/09/2024 03:37:43 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:43 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/d377d6a9-87bc-4c83-9446-32fd55e589d1/contenturl_0.json?se=2024-07-09T16%3A37%3A43Z&sp=r&sv=2024-05-04&sr=b&sig=ahlqBgOk/S3BnKPXX/v67RjG9GfRUiEMFj3NCXLF4AQ%3D HTTP/11" 200 177133
+07/09/2024 03:37:43 PM GMT Summer Time Blob downloaded to output\d377d6a9-87bc-4c83-9446-32fd55e589d1_contenturl_0.json successfully.
+07/09/2024 03:37:43 PM GMT Summer Time Request URL: 'https://speechlanguagewigan.blob.core.windows.net/output?restype=REDACTED&comp=REDACTED&prefix=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.20.0 Python/3.12.2 (Windows-11-10.0.22631-SP0)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'cd6e2209-3e00-11ef-a734-703217b88818'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+07/09/2024 03:37:43 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:44 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output?restype=container&comp=list&prefix=a701677f-59d5-45f5-9272-3c0c4d7b6888%2F HTTP/11" 200 None
+07/09/2024 03:37:44 PM GMT Summer Time Response status: 200
+Response headers:
+    'Transfer-Encoding': 'chunked'
+    'Content-Type': 'application/xml'
+    'Vary': 'REDACTED'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '343633c1-001e-0049-7f0d-d28a74000000'
+    'x-ms-client-request-id': 'cd6e2209-3e00-11ef-a734-703217b88818'
+    'x-ms-version': 'REDACTED'
+    'Date': 'Tue, 09 Jul 2024 14:37:44 GMT'
+07/09/2024 03:37:44 PM GMT Summer Time Starting new HTTPS connection (1): speechlanguagewigan.blob.core.windows.net:443
+07/09/2024 03:37:44 PM GMT Summer Time https://speechlanguagewigan.blob.core.windows.net:443 "GET /output/a701677f-59d5-45f5-9272-3c0c4d7b6888/contenturl_0.json?se=2024-07-09T16%3A37%3A44Z&sp=r&sv=2024-05-04&sr=b&sig=Tt7WrcSE4Tx/BT1nOz2bLp5F9VgTRR8TW7qu75L8nN8%3D HTTP/11" 200 177133
+07/09/2024 03:37:44 PM GMT Summer Time Blob downloaded to output\a701677f-59d5-45f5-9272-3c0c4d7b6888_contenturl_0.json successfully.
+
+2024-07-09 15:37:45 - INFO - Conversation saved to output\speaker_conversation.json
+

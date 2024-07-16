@@ -1,0 +1,84 @@
+.stApp {
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+}
+.stButton>button {
+    background-color: #4c5eaf;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.stButton>button:hover {
+    background-color: #377ab1;
+    box-shadow: 0px 15px 20px rgba(46, 104, 229, 0.4);
+    transform: translateY(-7px);
+    color:antiquewhite
+}
+.stProgress > div > div > div > div {
+    background-color: #4CAF50;
+}
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+.audio-player {
+    width: 100%;
+    background: #f1f3f4;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.audio-player audio {
+    width: 100%;
+    outline: none;
+}
+.st-emotion-cache-16idsys p {
+    font-size: 18px;
+    color: #333;
+}
+.conversation-text {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.speaker-1 {
+    background-color: #c5ccf1;
+}
+.speaker-2 {
+    background-color: #c5dee2;
+}
+.stProgress {
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+.stProgress > div > div > div > div {
+    background-color: #4CAF50;
+}
+.progress-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgb(195, 239, 247);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 80%;
+}
+
+.progress-container img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.stButton {
+    margin-top: -5px;
+    margin-bottom: -5px;
+}

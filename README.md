@@ -50,6 +50,7 @@ python main.py
 
 ## Project Structure
 
+```bash
 project-folder/
 ├── swagger_client/           # Generated client library files
 │   ├── __init__.py
@@ -58,7 +59,7 @@ project-folder/
 ├── requirements.txt          # List of required Python packages
 ├── README.md                 # This file
 └── .gitignore                # Git ignore file
-
+```
 
 
 

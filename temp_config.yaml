@@ -1,0 +1,16 @@
+connection_string: ""
+container_name: "output"
+output_container_name: "output"
+container_name_input: "input"
+blob_name: "contenturl_0.json"
+download_file_path: "contenturl_0.json"
+blob_name: ""
+download_file_path: ""
+subscription_key: ""
+service_region: ""
+recordings_container_name: "convertedinput"
+recordings_blob_name: ""
+download_folder: "output"
+local_wav_folder: "input"
+
+

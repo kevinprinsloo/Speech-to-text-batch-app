@@ -41,8 +41,9 @@ If there are no errors, the installation was successful.
 
 Include instructions here on how to use your code. For example:
 
-    1. Update the configuration file with your API key and other necessary details.
-    2. Run the main script:
+1. Update the configuration file with your API key and other necessary details.
+2. Run the main script:
+
 
 ```bash
 python main.py

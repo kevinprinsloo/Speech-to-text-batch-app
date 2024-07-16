@@ -1,43 +1,67 @@
-# How to use the Speech Services Batch Transcription API from Python
+# Speech Services Batch Transcription API Project
 
-## Download and install the API client library
+This project demonstrates how to use the Speech Services Batch Transcription API from Python. The necessary client library is included in this repository.
 
-To execute the sample you need to generate the Python library for the REST API which is generated through [Swagger](swagger.io).
+## Setup Instructions
 
-Follow these steps for the installation:
+### 1. Clone the repository
 
-1. Go to https://editor.swagger.io.
-1. Click **File**, then click **Import URL**.
-1. Enter the Swagger URL for the Speech Services API: `https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/cognitiveservices/data-plane/Speech/SpeechToText/stable/v3.1/speechtotext.json`.
-1. Click **Generate Client** and select **Python**.
-1. Save the client library.
-1. Extract the downloaded python-client-generated.zip somewhere in your file system.
-1. Install the extracted python-client module in your Python environment using pip: `pip install path/to/package/python-client`.
-1. The installed package has the name `swagger_client`. You can check that the installation worked using the command `python -c "import swagger_client"`.
-
-## Install other dependencies
-
-The sample uses the `requests` library. You can install it with the command
+First, clone the repository to your local machine and navigate to the project directory:
 
 ```bash
-pip install requests
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
 ```
 
-## Run the sample code
+### 2. Install the required packages
+Install the required Python packages using pip:
 
-The sample code itself is [main.py](python-client/main.py) and can be run using Python 3.7 or higher.
-You will need to adapt the following information to run the sample:
+```bash
+pip install -r requirements.txt
+```
 
-1. Your Cognitive Services subscription key and region.
-    
-    Some notes:
+### 3. Install the swagger_client package
+The client library for the Speech Services API is included in the `swagger_client` folder. Install it using `pip`:
 
-    - You can get the subscription key from the "Keys and Endpoint" tab on your Cognitive Services or Speech resource in the Azure Portal.
-    - Batch transcription is only available for paid subscriptions, free subscriptions are not supported.
-    - Please refer to [this page](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis) for a complete list of region identifiers in the expected format.
+```bash
+pip install ./swagger_client
+```
 
-1. The URI of an audio recording in blob storage. Please refer to the [Azure Storage documentation](https://docs.microsoft.com//rest/api/storageservices/authorize-requests-to-azure-storage) on information on how to authorize accesses against blob storage.
-1. (Optional:) The model ID of an adapted model, if you want to use a custom model.
-1. (Optional:) The URI of a container with audio files if you want to transcribe all of them with a single request.
 
-You can use a development environment like Visual Studio Code to edit, debug, and execute the sample.
+### 4. Verify the installation
+To ensure the swagger_client package was installed correctly, run the following command:
+
+```bash
+python -c "import swagger_client"
+```
+
+If there are no errors, the installation was successful.
+
+### Usage
+
+Include instructions here on how to use your code. For example:
+
+    1. Update the configuration file with your API key and other necessary details.
+    2. Run the main script:
+
+```bash
+python main.py
+```
+
+## Project Structure
+
+project-folder/
+├── swagger_client/           # Generated client library files
+│   ├── __init__.py
+│   └── ... (other library files)
+├── main.py                   # Main script to run
+├── requirements.txt          # List of required Python packages
+├── README.md                 # This file
+└── .gitignore                # Git ignore file
+
+
+
+
+
+
+

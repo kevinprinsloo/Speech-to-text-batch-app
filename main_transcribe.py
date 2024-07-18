@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import json
 import logging
 import sys
 import requests
@@ -22,12 +23,9 @@ with open('config.yaml', 'r') as file:
 
 CONNECTION_STRING = config['connection_string']
 OUTPUT_CONTAINER_NAME = config['output_container_name']
-BLOB_NAME = config['blob_name']
-DOWNLOAD_FILE_PATH = config['download_file_path']
 SUBSCRIPTION_KEY = config['subscription_key']
 SERVICE_REGION = config['service_region']
-RECORDINGS_CONTAINER_NAME = config['recordings_container_name']
-RECORDINGS_BLOB_NAME = config['recordings_blob_name']
+INPUT_CONTAINER_NAME = config['input_container_name']
 
 logging.basicConfig(
     stream=sys.stdout,
@@ -36,6 +34,13 @@ logging.basicConfig(
     datefmt="%m/%d/%Y %I:%M:%S %p %Z",
 )
 
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.isoformat()
+        return super(DateTimeEncoder, self).default(obj)
+
+
 NAME = "Simple transcription"
 DESCRIPTION = "Simple transcription description"
 LOCALE = "en-US"
@@ -43,6 +48,11 @@ LOCALE = "en-US"
 # Define a function to generate a valid SAS URL
 def generate_sas_url(container_name, blob_name, permission, expiry_duration_hours):
     blob_service_client = BlobServiceClient.from_connection_string(CONNECTION_STRING)
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
+    
+    if not blob_client.exists():
+        raise Exception(f"Blob does not exist: {blob_name}")
+    
     sas_token = generate_blob_sas(
         account_name=blob_service_client.account_name,
         container_name=container_name,
@@ -52,17 +62,19 @@ def generate_sas_url(container_name, blob_name, permission, expiry_duration_hour
         expiry=datetime.now(timezone.utc) + timedelta(hours=expiry_duration_hours),
     )
     sas_url = f"https://{blob_service_client.account_name}.blob.core.windows.net/{container_name}/{blob_name}?{sas_token}"
+    
+    # Test the SAS URL
+    try:
+        response = requests.head(sas_url)
+        response.raise_for_status()
+        logging.info(f"SAS URL is valid and accessible: {sas_url}")
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Error accessing SAS URL: {e}")
+        raise Exception(f"Invalid SAS URL: {sas_url}")
+    
     return sas_url
 
-# Generate a new SAS URL for the recordings blob
-recordings_blob_sas_url = generate_sas_url(
-    RECORDINGS_CONTAINER_NAME,
-    RECORDINGS_BLOB_NAME,
-    BlobSasPermissions(read=True),
-    8,
-)  # 8 hours expiry
-
-# Generate a new SAS URL for the output container
+# Define a function to generate a valid SAS URL for a container
 def generate_container_sas_url(container_name, permission, expiry_duration_hours):
     blob_service_client = BlobServiceClient.from_connection_string(CONNECTION_STRING)
     sas_token = generate_container_sas(
@@ -79,17 +91,14 @@ def generate_container_sas_url(container_name, permission, expiry_duration_hours
 MODEL_REFERENCE = None  # guid of a custom model
 
 def transcribe_from_single_blob(uri, properties):
-    """
-    Transcribe a single audio file located at `uri` using the settings specified in `properties`
-    using the base model for the specified locale.
-    """
     transcription_definition = swagger_client.Transcription(
         display_name=NAME,
         description=DESCRIPTION,
         locale=LOCALE,
-        content_urls=[uri],
+        content_urls=[uri],  # Ensure this is a list with the URI
         properties=properties,
     )
+    logging.info(f"Transcription definition created with content_urls: {transcription_definition.content_urls}")
     return transcription_definition
 
 def transcribe_with_custom_model(client, uri, properties):
@@ -168,103 +177,105 @@ def delete_all_transcriptions(api):
             logging.error(f"Could not delete transcription {transcription_id}: {exc}")
 
 def save_transcription_id(transcription_id, file_path):
-    with open(file_path, 'a') as f:
+    with open(file_path, 'w') as f:  # Changed from 'a' to 'w' to overwrite
         f.write(f"{transcription_id}\n")
+    logging.info(f"Saved transcription ID {transcription_id} to {file_path}")
+
+def check_transcription_status(api, transcription_id, max_retries=180):  # 15 minutes
+    retry_count = 0
+    while retry_count < max_retries:
+        time.sleep(5)
+        transcription = api.transcriptions_get(transcription_id)
+        logging.info("Transcriptions status: %s", transcription.status)
+
+        if transcription.status in ("Failed", "Succeeded"):
+            return transcription
+
+        retry_count += 1
+
+    return None
 
 def transcribe():
     logging.info("Starting transcription client...")
 
-    # configure API key authorization: subscription_key
     configuration = swagger_client.Configuration()
-    configuration.api_key["Ocp-Apim-Subscription-Key"] = SUBSCRIPTION_KEY
-    configuration.host = (
-        f"https://{SERVICE_REGION}.api.cognitive.microsoft.com/speechtotext/v3.1"
-    )
+    configuration.api_key["Ocp-Apim-Subscription-Key"] = config['subscription_key']
+    configuration.host = f"https://{config['service_region']}.api.cognitive.microsoft.com/speechtotext/v3.1"
 
-    # create the client object and authenticate
     client = swagger_client.ApiClient(configuration)
-
-    # create an instance of the transcription api class
     api = swagger_client.CustomSpeechTranscriptionsApi(api_client=client)
 
-    # Specify transcription properties by passing a dict to the properties parameter.
     properties = swagger_client.TranscriptionProperties()
     properties.word_level_timestamps_enabled = True
     properties.display_form_word_level_timestamps_enabled = True
     properties.punctuation_mode = "DictatedAndAutomatic"
     properties.profanity_filter_mode = "Masked"
 
-    # Generate a new SAS URL for the output container
     properties.destination_container_url = generate_container_sas_url(
         OUTPUT_CONTAINER_NAME,
-        ContainerSasPermissions(
-            read=True, add=True, create=True, write=True, delete=True, list=True
-        ),
+        ContainerSasPermissions(read=True, add=True, create=True, write=True, delete=True, list=True),
         8,
-    )  # 8 hours expiry
+    )
 
-    # Enable and configure speaker separation
     properties.diarization_enabled = True
     properties.diarization = swagger_client.DiarizationProperties(
         swagger_client.DiarizationSpeakersProperties(min_count=1, max_count=5)
     )
 
-    transcription_definition = transcribe_from_single_blob(
-        recordings_blob_sas_url, properties
-    )
+    try:
+        with open('current_file_info.txt', 'r') as file:
+            unique_id, blob_name = file.read().strip().split(',')
 
-    created_transcription, status, headers = api.transcriptions_create_with_http_info(
-        transcription=transcription_definition
-    )
+        logging.info(f"Read from current_file_info.txt: unique_id={unique_id}, blob_name={blob_name}")
 
-    # get the transcription Id from the location URI
-    transcription_id = headers["location"].split("/")[-1]
+        recordings_blob_sas_url = generate_sas_url(
+            INPUT_CONTAINER_NAME,
+            blob_name,
+            BlobSasPermissions(read=True),
+            48,
+        )
+        logging.info(f"Generated SAS URL for blob: {blob_name}")
+        logging.info(f"In container: {INPUT_CONTAINER_NAME}")
+        logging.info(f"Full SAS URL: {recordings_blob_sas_url}")
 
-    # Save transcription ID to a file
-    save_transcription_id(transcription_id, 'transcription_ids.txt')
+        transcription_definition = transcribe_from_single_blob(recordings_blob_sas_url, properties)
 
-    logging.info(
-        "Created new transcription with id '%s' in region %s",
-        transcription_id,
-        SERVICE_REGION,
-    )
+        created_transcription, status, headers = api.transcriptions_create_with_http_info(
+            transcription=transcription_definition
+        )
 
-    logging.info("Checking status.")
+        transcription_id = headers["location"].split("/")[-1]
+        save_transcription_id(transcription_id, 'transcription_ids.txt')
 
-    completed = False
+        logging.info(
+            "Created new transcription with id '%s' in region %s",
+            transcription_id,
+            config['service_region'],
+        )
 
-    while not completed:
-        time.sleep(5)
-        transcription = api.transcriptions_get(transcription_id)
-        logging.info("Transcriptions status: %s", transcription.status)
+        logging.info("Checking status.")
 
-        if transcription.status in ("Failed", "Succeeded"):
-            completed = True
+        transcription = check_transcription_status(api, transcription_id)
+
+        if transcription is None:
+            logging.warning("Transcription is still running after the initial timeout. It will continue in the background.")
+            logging.info(f"Transcription ID: {transcription_id}")
+            return transcription_id
 
         if transcription.status == "Succeeded":
-            if properties.destination_container_url is not None:
-                logging.info(
-                    "Transcription succeeded. Results are located in your Azure Blob Storage."
-                )
-                break
-
-            pag_files = api.transcriptions_list_files(transcription_id)
-            for file_data in _paginate(api, pag_files):
-                if file_data.kind != "Transcription":
-                    continue
-
-                audiofilename = file_data.name
-                results_url = file_data.links.content_url
-                results = requests.get(results_url, timeout=10)
-                logging.info(
-                    "Results for %s:\n%s",
-                    audiofilename,
-                    results.content.decode("utf-8"),
-                )
+            logging.info("Transcription succeeded. Results are located in your Azure Blob Storage.")
         elif transcription.status == "Failed":
-            logging.info(
-                "Transcription failed: %s", transcription.properties.error.message
-            )
+            error_details = transcription.to_dict()
+            error_message = json.dumps(error_details, indent=2, cls=DateTimeEncoder)
+            logging.error(f"Transcription failed. Error details:\n{error_message}")
+            raise Exception(f"Transcription failed: {error_message}")
+
+        return transcription_id
+
+    except Exception as e:
+        logging.error(f"Error in transcription process: {e}")
+        raise
 
 if __name__ == "__main__":
-    transcribe()
+    transcription_id = transcribe()
+    print(f"Transcription ID: {transcription_id}")

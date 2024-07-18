@@ -6,17 +6,17 @@ import sys
 import requests
 import os
 
-logging.basicConfig(
-    stream=sys.stdout,
-    level=logging.DEBUG,
-    format="%(asctime)s %(message)s",
-    datefmt="%m/%d/%Y %I:%M:%S %p %Z",
-)
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
 
 def load_config(config_file):
     with open(config_file, 'r') as file:
         config = yaml.safe_load(file)
     return config
+
+# Load configuration from config.yaml
+config = load_config('config.yaml')
+OUTPUT_CONTAINER_NAME = config["output_container_name"]
 
 def generate_blob_sas_url(connection_string, container_name, blob_name, permission, expiry_duration_hours):
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
@@ -34,9 +34,8 @@ def generate_blob_sas_url(connection_string, container_name, blob_name, permissi
 def download_blob(sas_url, download_file_path):
     try:
         response = requests.get(sas_url, stream=True)
-        response.raise_for_status()  # Ensure the request was successful
+        response.raise_for_status()
 
-        # Ensure the directory exists
         os.makedirs(os.path.dirname(download_file_path), exist_ok=True)
 
         with open(download_file_path, "wb") as download_file:
@@ -44,47 +43,63 @@ def download_blob(sas_url, download_file_path):
                 download_file.write(chunk)
 
         logging.info(f"Blob downloaded to {download_file_path} successfully.")
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         logging.error(f"An error occurred while downloading the blob: {e}")
+        logging.error(f"Response status code: {e.response.status_code if e.response else 'N/A'}")
+        logging.error(f"Response content: {e.response.content if e.response else 'N/A'}")
+        raise
 
-def get_content_url_blob(connection_string, container_name, transcription_id):
+def get_content_url_blob(connection_string, container_name):
     try:
         blob_service_client = BlobServiceClient.from_connection_string(connection_string)
         container_client = blob_service_client.get_container_client(container_name)
         
-        # List blobs in the container to find the contenturl_0.json file within the transcription ID folder
-        prefix = f"{transcription_id}/"
-        blobs = container_client.list_blobs(name_starts_with=prefix)
+        blobs = list(container_client.list_blobs(name_starts_with=''))
+        logging.info(f"Found {len(blobs)} blobs in container {container_name}")
+        
         for blob in blobs:
             if blob.name.endswith("contenturl_0.json"):
+                logging.info(f"Found content URL blob: {blob.name}")
                 return blob.name
-        logging.error(f"No contenturl_0.json file found for transcription ID {transcription_id}")
+        
+        logging.error(f"No contenturl_0.json file found in container {container_name}")
         return None
     except Exception as e:
         logging.error(f"An error occurred while listing the blobs: {e}")
         return None
 
 def download_transcriptions(config):
-    with open('transcription_ids.txt', 'r') as file:
-        transcription_ids = [line.strip() for line in file.readlines()]
+    try:
+        with open('current_file_info.txt', 'r') as file:
+            unique_id, blob_name = file.read().strip().split(',')
+        logging.info(f"Processing file with unique_id: {unique_id}, blob_name: {blob_name}")
 
-    for transcription_id in transcription_ids:
-        blob_name = get_content_url_blob(
+        content_blob_name = get_content_url_blob(
             config['connection_string'],
-            config['output_container_name'],
-            transcription_id
+            OUTPUT_CONTAINER_NAME
         )
 
-        if blob_name:
+        if content_blob_name:
+            logging.info(f"Found content blob: {content_blob_name}")
             sas_url = generate_blob_sas_url(
                 config['connection_string'],
-                config['output_container_name'],
-                blob_name,
+                OUTPUT_CONTAINER_NAME,
+                content_blob_name,
                 BlobSasPermissions(read=True),
-                1  # 1 hour expiry
+                1
             )
-            local_download_path = os.path.join(config['download_folder'], f"{transcription_id}_contenturl_0.json")
+            local_download_path = os.path.join(config['download_folder'], f"{unique_id}_transcript.json")
             download_blob(sas_url, local_download_path)
+            
+            if os.path.exists(local_download_path):
+                logging.info(f"Transcript downloaded successfully to {local_download_path}")
+            else:
+                logging.error(f"Failed to download transcript to {local_download_path}")
+        else:
+            logging.error("No content URL blob found")
+    except Exception as e:
+        logging.error(f"Error in downloading transcriptions: {e}")
+        raise
 
 if __name__ == "__main__":
     config = load_config('config.yaml')
